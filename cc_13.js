@@ -69,3 +69,43 @@ employeeContainer.addEventListener("click", (event) => {
     }
 });
 
+
+//TASK5
+// Function to enable inline editing
+function enableInlineEditing(card) {
+    const nameHeading = card.querySelector("h2");
+    const positionPara = card.querySelector("p");
+
+    // Store the original content
+    const originalName = nameHeading.textContent;
+    const originalPosition = positionPara.textContent;
+
+    // Replace static content with input fields
+    nameHeading.innerHTML = `<input type="text" value="${originalName}" />`;
+    positionPara.innerHTML = `<input type="text" value="${originalPosition}" />`;
+
+    // Add a save button
+    const saveButton = document.createElement("button");
+    saveButton.textContent = "Save";
+    saveButton.addEventListener("click", () => {
+        // Update the card with the new values
+        const newName = nameHeading.querySelector("input").value;
+        const newPosition = positionPara.querySelector("input").value;
+
+        nameHeading.textContent = newName;
+        positionPara.textContent = newPosition;
+
+        // Remove the save button
+        saveButton.remove();
+    });
+
+    card.appendChild(saveButton);
+}
+
+// Add double-click event listener to employee cards
+employeeContainer.addEventListener("dblclick", (event) => {
+    const card = event.target.closest(".employee-card");
+    if (card) {
+        enableInlineEditing(card);
+    }
+});
