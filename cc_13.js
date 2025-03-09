@@ -29,3 +29,24 @@ function createEmployeeCard(name, position) {
 createEmployeeCard("John Doe", "Software Engineer");
 createEmployeeCard("Jane Smith", "Product Manager");
 createEmployeeCard("Alice Johnson", "UX Designer");
+
+
+//TASK3
+// Function to highlight all employee cards
+function highlightEmployeeCards() {
+    // Select all employee cards
+    const employeeCards = document.querySelectorAll(".employee-card");
+
+    // Convert NodeList to an array
+    const cardsArray = Array.from(employeeCards);
+
+    // Apply a style update to each card
+    cardsArray.forEach((card) => {
+        card.style.backgroundColor = "#f0f8ff"; // Light blue background
+        card.style.border = "2px solid #007bff"; // Blue border
+    });
+}
+
+// Call the function to highlight cards
+highlightEmployeeCards();
+
