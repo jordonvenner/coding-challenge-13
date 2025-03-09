@@ -50,3 +50,22 @@ function highlightEmployeeCards() {
 // Call the function to highlight cards
 highlightEmployeeCards();
 
+
+//TASK4
+// Add event listener to the employee container for event bubbling
+const employeeContainer = document.getElementById("employeeContainer");
+employeeContainer.addEventListener("click", (event) => {
+    if (event.target.tagName === "BUTTON") {
+        // If the clicked element is a button, remove the card
+        const card = event.target.closest(".employee-card");
+        if (card) {
+            card.remove();
+        }
+        // Stop event bubbling
+	    event.stopPropagation();
+    } else {
+        // Log a message when any card is clicked
+        console.log("Employee card clicked!");
+    }
+});
+
